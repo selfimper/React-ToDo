@@ -6,7 +6,7 @@ import React, { Component } from 'react';
   }
   submit(e){
     if (e.key === 'Enter') {
-      this.props.onSubmit.call()
+      this.props.onSubmit(e)
     }
   }
 }
