@@ -2,7 +2,7 @@
   color: #333;
   border: 1px solid #aaa;
   border-radius: 4px;
-  background: white;
+  background: rgb(236, 236, 236);
   margin: 2em;
   padding: 0 1em;
   min-height: 20em;
@@ -15,4 +15,7 @@
 }
 .App > .todoList> li:nth-child(even){
   background: transparent;
+}
+h1{
+  text-align: center;
 }

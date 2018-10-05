@@ -15,5 +15,12 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://selfimper.github.io/react-todo/build"
+  "homepage": "https://selfimper.github.io/react-todo/build",
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  }
 }
