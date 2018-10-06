@@ -22,14 +22,14 @@ export default class UserDialog extends Component{
     e.preventDefault()
     let {username, password} = this.state.formData
     let success = (user)=>{
-      console.log(user)
+        this.props.onSignUp.call(null, user)
     }
     let error = (error)=>{
       console.log(error)
     }
     signUp(username, password, success, error)
   }
-  
+
  signIn(e){}
  changeFormData(key, e){
    let stateCopy = JSON.parse(JSON.stringify(this.state))  // 用 JSON 深拷贝
