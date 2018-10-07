@@ -6,14 +6,15 @@ export default class UserDialog extends Component{
   constructor(props){
     super(props)
     this.state = {
-      selected: 'signUp',
-      formData: {
-        email: '',
-        username: '',
-        password: '',
-      }
+        selected: 'signUp', // 'signIn'
+        selectedTab: 'signInOrSignUp', // 'forgotPassword'
+        formData: {
+            email: '',
+            username: '',
+            password: '',
+        }
+        }
     }
-  }
   switch(e){
     this.setState({
       selected: e.target.value
@@ -100,14 +101,13 @@ export default class UserDialog extends Component{
        </div>
        <div className="row actions">
          <button type="submit">登录</button>
-         <a href="javascript:;">忘记密码了？</a>
+         <a href="#" onClick={this.showForgotPassword.bind(this)}>忘记密码了？</a>
         </div>
       </form>
     ) 
-    return (
-      <div className="UserDialog-Wrapper">
-        <div className="UserDialog">
-        <nav>
+    let signInOrSignUp = (
+        <div className="signInOrSignUp">
+          <nav>
             <label>
               <input type="radio" value="signUp" 
                 checked={this.state.selected === 'signUp'}
@@ -124,7 +124,38 @@ export default class UserDialog extends Component{
             {this.state.selected === 'signIn' ? signInForm : null}
           </div>
         </div>
+      )
+      let forgotPassword = (
+        <div className="forgotPassword">
+          <h3>
+            重置密码
+          </h3>
+          <form className="forgotPassword" onSubmit={this.resetPassword.bind(this)}> {/* 登录*/}
+            <div className="row">
+              <label>邮箱</label>
+              <input type="text" value={this.state.formData.email}
+                onChange={this.changeFormData.bind(this, 'email')}/>
+            </div>
+            <div className="row actions">
+              <button type="submit">发送重置邮件</button>
+            </div>
+          </form>
+        </div>
+      )
+
+    return (
+      <div className="UserDialog-Wrapper">
+        <div className="UserDialog">
+          {this.state.selectedTab === 'signInOrSignUp' ? signInOrSignUp : forgotPassword}
+        </div>
       </div>
     )
   }
+  showForgotPassword(){
+    let stateCopy = JSON.parse(JSON.stringify(this.state))
+    stateCopy.selectedTab = 'forgotPassword'
+    this.setState(stateCopy)
+  }
+  resetPassword(){
+   }
 }
