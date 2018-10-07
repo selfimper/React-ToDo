@@ -7,7 +7,25 @@ AV.init({
 })
  export default AV
 
- export function signUp(email, username, password, successFn, errorFn){
+ export const TodoModel = {
+    create({status, title, deleted}, successFn, errorFn){
+      let Todo = AV.Object.extend('Todo')
+      let todo = new Todo()
+      todo.set('title', title)
+      todo.set('status', status)
+      todo.set('deleted', deleted)
+      todo.save().then(function (response) {
+        successFn.call(null, response.id)
+      }, function (error) {
+        errorFn && errorFn.call(null, error)
+      });
+     },
+    update(){
+     },
+    destroy(){
+     }
+  }
+  export function signUp (email, username, password, successFn, errorFn) {
     // 新建 AVUser 对象实例
    var user = new AV.User()
    // 设置用户名
@@ -35,7 +53,7 @@ AV.init({
     })
   }
 
-  export function getCurrentUser(){
+  export function getCurrentUser () {
     let user = AV.User.current()
     if(user){
       return getUserFromAVUser(user)
@@ -44,14 +62,14 @@ AV.init({
     }
   }
 
-  export function signOut(){
+  export function signOut () {
     AV.User.logOut()
     return undefined
   }
 
   export function sendPasswordResetEmail(email, successFn, errorFn){
     AV.User.requestPasswordReset(email).then(function (success) {
-      successFn.call() 
+      successFn.call()
     }, function (error) {
       errorFn.call(null, error)
     })
