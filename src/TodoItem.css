@@ -2,7 +2,6 @@
     padding: .5em;
     display: flex;
     align-items: center;
-    
   }
   .TodoItem>.title{
     flex-grow: 1;

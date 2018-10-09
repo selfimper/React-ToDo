@@ -1,19 +1,22 @@
 import React, {Component} from 'react';
 import SignUpForm from './SignUpForm'
 import SignInForm from './SignInForm'
- export default class SignInOrSignUp extends Component {
+
+export default class SignInOrSignUp extends Component {
   constructor (props) {
     super(props)
     this.state = {
       selected: 'signUp'
     }
   }
-   switch (e) {
+   
+  switch (e) {
     this.setState({
       selected: e.target.value
     })
   }
-   render () {
+   
+  render () {
     return (
       <div className="signInOrSignUp">
         <nav>

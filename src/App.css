@@ -1,21 +1,28 @@
 .App {
   color: #333;
-  border: 1px solid #aaa;
+  border: 1px solid #eee;
   border-radius: 4px;
-  background: rgb(236, 236, 236);
+  background: white;
   margin: 2em;
   padding: 0 1em;
   min-height: 20em;
   min-width: 32em;
   box-shadow: 0 0 1em hsla(0,0%,0%,0.15);
 }
-
 .App > .todoList> li:nth-child(odd){
-  background: #eee;
+  background: #F3F3F3;
 }
 .App > .todoList> li:nth-child(even){
   background: transparent;
 }
 h1{
   text-align: center;
+}
+h1 button{
+  border-radius: 4px;
+}
+
+.TodoInput{
+  border-radius: 4px;
+  border-color: #617fde;
 }
