@@ -5,7 +5,8 @@ import './App.css';
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import UserDialog from './UserDialog'
-import {getCurrentUser, signOut, TodoModel} from './leanCloud'
+import {getCurrentUser, signOut, TodoModel} from './leanCloud';
+import { Button } from 'antd';
 
 class App extends Component {
   constructor(props){
@@ -40,7 +41,7 @@ render() {
     return (
       <div className="App">
           <h1>{this.state.user.username||'我'}的待办
-          {this.state.user.id ? <button onClick={this.signOut.bind(this)}>登出</button> : null}
+          {this.state.user.id ? <Button type="danger" onClick={this.signOut.bind(this)}>登出</Button> : null}
           </h1>
           <div className="inputWrapper">
             <TodoInput content={this.state.newTodo}

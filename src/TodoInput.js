@@ -1,5 +1,6 @@
 import React from 'react';
-import './TodoInput.css'
+import './TodoInput.css';
+import { Input } from 'antd';
 
 function submit (props, e) {
     if (e.key === 'Enter') {
@@ -14,7 +15,7 @@ function changeTitle (props, e) {
 
   // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
    export default function (props) {
-    return <input type="text" value={props.content}
+    return <Input type="text" value={props.content}
       className="TodoInput"
       onChange={changeTitle.bind(null, props)}
       onKeyPress={submit.bind(null, props)}/>

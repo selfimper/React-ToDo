@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import './TodoItem.css'
+import './TodoItem.css';
+import { Button } from 'antd';
+import { Checkbox } from 'antd';
 
 export default class TodoItem extends Component {
     render(){
         return (
         <div className="TodoItem">
-            <input type="checkbox" checked={this.props.todo.status === 'completed'}
-           onChange={this.toggle.bind(this)}/>  
+             <Checkbox type="checkbox" checked={this.props.todo.status === 'completed'}
+           onChange={this.toggle.bind(this)}/>
              <span className="title">{this.props.todo.title}</span>
-             <button onClick={this.delete.bind(this)}>删除</button>
+             <Button type="primary" onClick={this.delete.bind(this)}>删除</Button>
         </div>
           )
         }
